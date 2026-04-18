@@ -1,0 +1,16 @@
+# Environments
+.venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Data and Models
+# We ignore the raw dataset and large model files so they don't bloat the Git history
+data/raw/*.csv
+data/processed/*
+models/*.pkl
+
+# OS generated files
+.DS_Store
