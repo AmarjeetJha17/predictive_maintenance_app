@@ -31,9 +31,9 @@ This project is an end-to-end **Explainable AI (XAI)** dashboard designed for sh
 
 ## 📸 Dashboard Previews
 
-1. `![Fleet Overview](image/1.png)` - *Showing the R/Y/G tabular dashboard.*
-2. `![Diagnostics](image/2.png)` - *Showing the Plotly Gauges and SHAP Waterfall.*
-3. `![EDA Notebook](image/3.png)` - *Showing the Torque vs. RPM failure boundary.*
+1. `![Fleet Overview](images/1.png)` - *Showing the R/Y/G tabular dashboard.*
+2. `![Diagnostics](images/2.png)` - *Showing the Plotly Gauges and SHAP Waterfall.*
+3. `![EDA Notebook](images/3.png)` - *Showing the Torque vs. RPM failure boundary.*
 
 ## Project Structure
 
