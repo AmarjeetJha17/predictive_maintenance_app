@@ -126,7 +126,7 @@ predictive_maintenance_app/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/predictive_maintenance_app.git
+git clone https://github.com/AmarjeetJha17/predictive_maintenance_app.git
 cd predictive_maintenance_app
 ```
 
@@ -179,35 +179,5 @@ The app will open in your browser at `http://localhost:8501`. Use the sidebar to
 
 ---
 
-## Retraining the Model
-
-If you modify the data processing pipeline or want to experiment with different hyperparameters:
-
-```bash
-# 1. Re-run data processing and training
-cd src
-python model_training.py
-
-# 2. Restart Streamlit to clear cached artifacts
-streamlit run ../app.py
-```
-
-The training script will print a **classification report** with precision, recall, and F1-score on the held-out test set so you can evaluate model performance before deploying to the dashboard.
-
----
-
-## Dataset
-
-This project uses the **AI4I 2020 Predictive Maintenance Dataset** from the UCI Machine Learning Repository.
-
-- **Source:** [UCI ML Repository](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset)
-- **Records:** 10,000 data points
-- **Features:** Machine type (L/M/H), air temperature, process temperature, rotational speed, torque, tool wear
-- **Target:** Binary — machine failure (1) or normal operation (0)
-- **Failure Modes:** Tool Wear Failure (TWF), Heat Dissipation Failure (HDF), Power Failure (PWF), Overstrain Failure (OSF), Random Failure (RNF) — *dropped during training to prevent data leakage*
-
----
-
-## License
-
-This project is for educational and demonstration purposes. The AI4I 2020 dataset is provided under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
+### 🧠 Author
+Amarjit Jha | Aspiring Data Scientist & ML Engineer | Targeting 2026 Internships in Pune [LinkedIn Profile Link] | [Portfolio Link]
