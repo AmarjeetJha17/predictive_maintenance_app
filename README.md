@@ -1,68 +1,39 @@
-# 🏭 Factory Operations — Predictive Maintenance Dashboard
+# 🏭 Industry 4.0: Predictive Maintenance Operations Center
 
-A real-time predictive maintenance system that monitors factory machinery telemetry and forecasts failures **before** they cause unplanned downtime. Built with **XGBoost**, **SHAP Explainability**, and a multi-page **Streamlit** dashboard.
+## 📌 Business Context
+In modern manufacturing (especially within automotive hubs like Pune), unplanned machine downtime costs lakhs of rupees per hour. Traditional "scheduled maintenance" is often wasteful, replacing parts that are still perfectly functional. 
 
----
+This project is an end-to-end **Explainable AI (XAI)** dashboard designed for shop-floor managers. It ingests live telemetry data (RPM, Torque, Temperatures) from CNC machinery and predicts mechanical failures *before* they occur, shifting operations from a reactive to a proactive model.
 
-## 📑 Table of Contents
-
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Dashboard Pages](#dashboard-pages)
-- [Project Structure](#project-structure)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Retraining the Model](#retraining-the-model)
-- [Dataset](#dataset)
-- [License](#license)
+## 🚀 Key Features
+* **Machine Learning Engine:** An XGBoost binary classifier optimized for severe class imbalance (utilizing algorithmic `scale_pos_weight` rather than naive SMOTE).
+* **Explainable AI (XAI):** Integration of `SHAP` (SHapley Additive exPlanations) to break the "black box" of AI. The dashboard visually explains exactly *why* a machine is failing (e.g., "High Torque + Low RPM indicates a jam").
+* **Fleet Command Center:** A Streamlit-powered frontend featuring a Red/Yellow/Green prioritization logic engine to instantly alert managers to critical machinery.
+* **Real-time Diagnostics:** Interactive Plotly telemetry gauges and a manual what-if simulator for stress-testing.
 
 ---
 
-## Overview
+## Tech Stack
 
-Manufacturing downtime is expensive. This project applies **supervised machine learning** to sensor telemetry data (temperature, rotational speed, torque, tool wear) to predict the probability of machine failure in real time.
-
-Every prediction is accompanied by a **SHAP waterfall chart** that explains exactly *which* sensor readings are pushing the risk score higher or lower — making the AI transparent and actionable for floor managers.
-
-### Risk Classification System
-
-| Status | Threshold | Action |
-|---|---|---|
-| 🟢 **Normal** | Failure probability **< 30%** | Machine operating within optimal parameters |
-| 🟡 **Warning** | Failure probability **30% – 75%** | Anomalous readings detected — schedule inspection |
-| 🔴 **Critical** | Failure probability **> 75%** | Impending failure — immediate intervention required |
-
----
-
-## Key Features
-
-- **XGBoost Classifier** trained on the AI4I 2020 dataset with class-imbalance handling via `scale_pos_weight`
-- **Explainable AI (XAI)** — SHAP TreeExplainer provides per-prediction feature attribution
-- **Real-Time Inference** — cached model loading via `@st.cache_resource` for instant slider response
-- **Interactive What-If Simulator** — drag sliders to stress-test virtual machines and watch risk shift live
-- **Color-Coded Fleet Monitoring** — 100-machine overview sorted by failure risk with Red/Yellow/Green status
-- **Plotly Gauge Charts** — per-sensor telemetry visualisation on the diagnostics page
-- **Data Leakage Prevention** — failure mode flags (TWF, HDF, PWF, OSF, RNF) are dropped before training
+| Category | Technology |
+|---|---|
+| **Language** | Python 3.13 |
+| **ML Model** | XGBoost |
+| **Explainability** | SHAP (TreeExplainer) |
+| **Data Processing** | Pandas, Scikit-learn (StandardScaler, train_test_split) |
+| **Dashboard** | Streamlit (multi-page app) |
+| **Visualisation** | Plotly, Matplotlib, Seaborn |
+| **Serialisation** | Joblib |
+| **Package Manager** | uv |
+| **Dev Tools** | Black (formatter), Ruff (linter) |
 
 ---
 
-## Dashboard Pages
+## 📸 Dashboard Previews
 
-### 1. 🏭 Command Center (`app.py`)
-The landing page. Provides a system overview, the risk classification key, and navigation guidance.
-
-### 2. 📊 Fleet Overview (`pages/1_Fleet_Overview.py`)
-Simulates a live factory floor with 100 machines (10 known failures + 90 normal operations). Runs batch inference and displays a **color-coded, sortable data table** with KPI metrics for total machines, warnings, and critical alerts.
-
-### 3. 🔍 Machine Diagnostics (`pages/2_Machine_Diagnostics.py`)
-Deep-dive into a single machine. Select a machine by UDI to view:
-- **Plotly gauge charts** for each sensor reading
-- A **SHAP waterfall chart** explaining the AI's risk assessment
-
-### 4. 🎛️ Manual Simulator (`pages/3_Manual_Simulator.py`)
-A what-if analysis tool. Adjust operational parameters via sidebar sliders (temperature, RPM, torque, tool wear) and observe how the AI's failure prediction and SHAP explanation update in real time.
-
----
+1. `![Fleet Overview](image/1.png)` - *Showing the R/Y/G tabular dashboard.*
+2. `![Diagnostics](image/2.png)` - *Showing the Plotly Gauges and SHAP Waterfall.*
+3. `![EDA Notebook](image/3.png)` - *Showing the Torque vs. RPM failure boundary.*
 
 ## Project Structure
 
@@ -97,24 +68,6 @@ predictive_maintenance_app/
 └── notebooks/
     └── 01_EDA.ipynb                # Exploratory Data Analysis
 ```
-
----
-
-## Tech Stack
-
-| Category | Technology |
-|---|---|
-| **Language** | Python 3.13 |
-| **ML Model** | XGBoost |
-| **Explainability** | SHAP (TreeExplainer) |
-| **Data Processing** | Pandas, Scikit-learn (StandardScaler, train_test_split) |
-| **Dashboard** | Streamlit (multi-page app) |
-| **Visualisation** | Plotly, Matplotlib, Seaborn |
-| **Serialisation** | Joblib |
-| **Package Manager** | uv |
-| **Dev Tools** | Black (formatter), Ruff (linter) |
-
----
 
 ## Getting Started
 
@@ -180,4 +133,4 @@ The app will open in your browser at `http://localhost:8501`. Use the sidebar to
 ---
 
 ### 🧠 Author
-Amarjit Jha | Aspiring Data Scientist & ML Engineer | Targeting 2026 Internships in Pune [LinkedIn Profile Link] | [Portfolio Link]
+Amarjit Jha | Aspiring Data Scientist & ML Engineer | Targeting 2026 Internships in Pune [LinkedIn Profile](https://www.linkedin.com/in/amarjit-jha-556656280/) | [Resum Link](https://drive.google.com/file/d/14_12w6018r6825y7V032X9L697979797/view?usp=sharing) | [Portfolio Link](https://amarjeetjha17.github.io/Portfolio/)
